@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Кидаем кости</title>
+        <style>
+        .kosti  {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;}
+        .kidaem {
+            color: red;}
+        </style>
+    </head>
+    <body>
+        <div class="kosti">
+            <div class="kidaem" id="otvet1"></div>
+            <div class="kidaem" id="otvet2"></div>
+            <div><button onclick="RandomCosti()">Бросить кости</button></div>
+        </div>
+    </body>
+    <script>
+        function RandomCosti() {
+            let kubik = [1, 2, 3, 4, 5, 6];
+            let chislo1 = Math.floor(Math.random() * kubik.length);
+            let chislo2 = Math.floor(Math.random() * kubik.length);
+            let Element1 = document.getElementById("otvet1");
+            let Element2 = document.getElementById("otvet2");
+                if (chislo1 === chislo2) {
+                alert("Удачное совпадение!");}
+            Element1.innerHTML = kubik[chislo1];
+            Element2.innerHTML = kubik[chislo2];}
+    </script>
+</html>
