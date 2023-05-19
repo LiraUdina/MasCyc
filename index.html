@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Шар судьбы</title>
+        <style>
+     .blok {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+            }
+    .char {
+        margin-top: 50px;
+        position: absolute;
+            }
+    .knopka {
+        background-color: blueviolet;
+        color: aliceblue;
+        border-radius: calc(20px + 20px);
+        padding: calc(5px + 5px) 10px;
+        margin-top: 20px;}
+        </style>
+    </head>
+    <body>
+        <div class="blok ">
+            <div class="char" id="otvet">  </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/2178/2178261.png">
+         
+            <div class="knopka">
+                <button  onclick="RandomChar()">Узнать</button>
+            </div>
+        </div>
+    <script>
+      function RandomChar() {
+    let RandomCharik = Math.floor(Math.random() * 4);
+    let charik = ["Ну вот точно! Никаких сомнений", "Мне кажется да", "Сконцентрируйся и спроси опять", "Даже не думай"];
+    let Element = document.getElementById("otvet");
+    Element.innerHTML = charik[RandomCharik];
+            }
+        </script>
+    </body>
+        </script>
+    </body>
+</html>
