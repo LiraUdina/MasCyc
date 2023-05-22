@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Список дел</title>
+        <style>
+        body {background-color: blue;}
+        
+        .blok { background: rgb(153, 255, 255);
+                padding: 25px;
+                border-radius: 20px;
+                width: 300px;}
+
+        .spisok {display: flex;
+                margin-top: 15px;
+                padding: 10px; 
+                flex-direction: column;}
+
+        .spisok div {display: block;
+                    margin-bottom: 8px;}
+
+        .knopki-cont {margin-top: 25px;
+                        display: flex;
+                        gap: 5px;}
+
+        .blok h2 {margin: 0; }
+
+        .knopki1 {background-color: blueviolet;
+                    color: aliceblue;
+                    border-radius: 30px;
+                    padding: 10px;
+                    margin-top: 10px;}
+
+        .knopki2 { background-color: red;
+                    padding: 10px;
+                    border-radius: 50px;
+                    border-radius: 10px;}
+        </style>
+    </head>
+    <body>
+        <div class="blok">
+            <h2>Список дел</h2>
+            <div class="spisok">
+                <div>Хлеб<button class="knopki2 delete-btn">Х</button></div>
+                <div>Соль<button class="knopki2 delete-btn">Х</button></div>
+                <div>Молоко<button class="knopki2 delete-btn">Х</button></div>
+            </div>
+            <div class="knopki-cont">
+                <div><button class="knopki1" onclick="addItem()">Добавить</button></div>
+                <div><button class="knopki1" onclick="clearSpisok()">Стереть</button></div>
+            </div>
+        </div>
+        <script>
+            let spisok = document.getElementsByClassName('spisok')[0];
+            addDeleteHandlers();
+
+            function addItem() {
+                let text = prompt("Что добавить к списку дел?");
+                const item = document.createElement('div');
+                item.innerHTML = `${text}<button class='knopki2 delete-btn'>X</button>`;
+                spisok.appendChild(item);
+                addDeleteHandlers();}
+            
+            function clearSpisok() {
+                spisok.innerHTML = '';}
+
+            function addDeleteHandlers() {
+            let deleteButtons = document.getElementsByClassName('delete-btn');
+            for (let i = 0; i < deleteButtons.length; i++) {
+                deleteButtons[i].addEventListener('click', function() {
+                    this.parentElement.remove();});}
+                }
+                </script>
+        </body>
+</html>
