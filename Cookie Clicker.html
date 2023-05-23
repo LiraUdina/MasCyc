@@ -1,0 +1,80 @@
+<html>
+<head><title>Тыкаем в печеньку</title>
+<style>
+.pech img {position: absolute;
+width: 314px;
+height: 314px;
+left: 54px;
+top: 138px;
+background: url(image.png);}
+.pech h2{position: absolute;
+width: 323px;
+height: 39px;
+left: 54px;
+top: 69px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 39px;}
+.pech h3{
+position: absolute;
+width: 126px;
+height: 39px;
+left: 456px;
+top: 218px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+color: #000000;}
+.pech h4 {
+position: absolute;
+width: 35px;
+height: 39px;
+left: 646px;
+top: 218px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+color: #000000;}
+.knopka{position: absolute;
+width: 133px;
+height: 41px;
+left: 456px;
+top: 314px;
+background: #35BF05;
+border-radius: 5px;}
+</style>
+</head>
+<body>
+    <div class="pech">
+         <h2>Кликай печеньку</h2>
+        <img id="cooke" src="coookie.png">
+        <h3>Монеты</h3>
+        <h4 id="ochki"></h4>
+        <button id="click" class="knopka" onclick="Upgrade()">Upgrade</button>
+        </div>
+ <script>
+        let imageElement = document.getElementById("cooke");
+        let a = 0;
+        let b = 1;
+    
+        function ochkii() {
+        a = a + b;
+        let Ochki = document.getElementById("ochki");
+        Ochki.innerHTML = a;}
+    
+        imageElement.addEventListener('click', ochkii);
+    
+        function Upgrade() {
+        if (a >= 10) {
+        b = 2;}}
+</script>
+</body>
+</script>
+</body>
+</html>
