@@ -48,26 +48,60 @@
                 <div><button class="knopki1" onclick="clearSpisok()">Стереть</button></div>
             </div>
         </div>
-        <script>
-            let spisok = document.getElementsByClassName('spisok')[0];
-            addDeleteHandlers();
+       <script>
+    let spisok = document.getElementsByClassName('spisok')[0];
+    addDeleteHandlers();
+    loadSpisok(); // Загрузить сохраненный список при загрузке страницы
 
-            function addItem() {
-                let text = prompt("Что добавить к списку дел?");
+    function addItem() {
+        let text = prompt("Что добавить к списку дел?");
+        const item = document.createElement('div');
+        item.innerHTML = `${text}<button class='knopki2 delete-btn'>X</button>`;
+        spisok.appendChild(item);
+        addDeleteHandlers();
+        saveSpisok(); // Сохранить список после добавления элемента
+    }
+    
+    function clearSpisok() {
+        spisok.innerHTML = '';
+        saveSpisok(); // Сохранить пустой список
+    }
+
+    function addDeleteHandlers() {
+        let deleteButtons = document.getElementsByClassName('delete-btn');
+        for (let i = 0; i < deleteButtons.length; i++) {
+            deleteButtons[i].addEventListener('click', function() {
+                this.parentElement.remove();
+                saveSpisok(); // Сохранить список после удаления элемента
+            });
+        }
+    }
+
+    function saveSpisok() {
+        let items = [];
+        let spisokItems = spisok.getElementsByTagName('div');
+        for (let i = 0; i < spisokItems.length; i++) {
+            items.push(spisokItems[i].innerText.split('X')[0].trim());
+        }
+        localStorage.setItem('spisok', JSON.stringify(items));
+    }
+    
+    function loadSpisok() {
+        let savedSpisok = localStorage.getItem('spisok');
+        if (savedSpisok) {
+            let items = JSON.parse(savedSpisok);
+            for (let i = 0; i < items.length; i++) {
                 const item = document.createElement('div');
-                item.innerHTML = `${text}<button class='knopki2 delete-btn'>X</button>`;
+                item.innerHTML = `${items[i]}<button class='knopki2 delete-btn'>X</button>`;
                 spisok.appendChild(item);
-                addDeleteHandlers();}
-            
-            function clearSpisok() {
-                spisok.innerHTML = '';}
-
-            function addDeleteHandlers() {
-            let deleteButtons = document.getElementsByClassName('delete-btn');
-            for (let i = 0; i < deleteButtons.length; i++) {
-                deleteButtons[i].addEventListener('click', function() {
-                    this.parentElement.remove();});}
-                }
-                </script>
+            }
+            addDeleteHandlers();
+        }
+    }
+        let savedProducts = localStorage.getItem("products");
+        let productList;
+        function updateProductList() {
+        localStorage.setItem("products", JSON.stringify(productList));}
+</script>
         </body>
 </html>
